@@ -26,4 +26,14 @@ describe('../src/calculator', function(){
             expect(actual).toEqual(5);
         });
     });
+    describe('given an input of 5 + 5', function () {
+        var input = "5 + 5";
+        var actual;
+        beforeEach(function () {
+            actual = sut.calculate(input);
+        });
+        it('it should produce 10', function () {
+            expect(actual).toEqual(10);
+        });
+    });
 });
