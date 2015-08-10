@@ -1,16 +1,19 @@
 'use strict';
 //calculator
-var sum = require("./sum");
-
 var calculator = {
     calculate: calculate
 };
 
 function calculate(input){
-    var inputs = input.split(' ');
-    if(inputs.length > 1)
-        return parseInt(inputs[0]) + parseInt(inputs[2]);
+    var additiveExpression = new RegExp(/([0-9]+ \+ [0-9]+)/g);
+
+    input = input.replace(additiveExpression, sum);
     return parseInt(input);
+}
+
+function sum(match) {
+    var elements = match.split(" ");
+    return parseInt(elements[0]) + parseInt(elements[2]);
 }
 
 module.exports = calculator;
